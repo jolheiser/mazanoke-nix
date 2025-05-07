@@ -17,6 +17,9 @@
       forAllSystems = f: nixpkgs.lib.genAttrs systems f;
     in
     {
+      overlays.default = import ./overlay.nix;
+      nixosModules.mazanoke = import ./module.nix;
+      nixosModules.default = self.nixosModules.mazanoke;
       packages = forAllSystems (
         system: import ./default.nix { pkgs = import nixpkgs { inherit system; }; }
       );
