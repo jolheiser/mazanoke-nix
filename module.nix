@@ -16,6 +16,11 @@ in
       default = pkg;
       description = "The MAZANOKE package";
     };
+    port = lib.mkOption {
+      type = lib.types.port;
+      default = 6292;
+      description = "Port to serve MAZANOKE on";
+    };
   };
   config = lib.mkIf cfg.enable {
     systemd.services.mazanoke = {
@@ -23,7 +28,7 @@ in
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
       serviceCfg = {
-        ExecStart = "${pkgs.miniserve}/bin/miniserve --index index.html ${cfg.package}";
+        ExecStart = "${pkgs.miniserve}/bin/miniserve --port ${builtins.toString cfg.port} --index index.html ${cfg.package}";
         Restart = "always";
         User = "mazanoke";
         Group = "mazanoke";
