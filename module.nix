@@ -27,7 +27,7 @@ in
       description = "MAZANOKE image optimizer";
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
-      serviceCfg = {
+      serviceConfig = {
         ExecStart = "${pkgs.miniserve}/bin/miniserve --port ${builtins.toString cfg.port} --index index.html ${cfg.package}";
         Restart = "always";
         User = "mazanoke";
