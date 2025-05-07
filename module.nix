@@ -34,5 +34,12 @@ in
         Group = "mazanoke";
       };
     };
+    users = {
+      users.mazanoke = {
+        isSystemUser = true;
+        group = "mazanoke";
+      };
+      groups.mazanoke = { };
+    };
   };
 }
