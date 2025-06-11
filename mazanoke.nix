@@ -2,7 +2,7 @@
   pkgs ? import <nixpkgs> { },
 }:
 let
-  version = "1.1.4";
+  version = "1.1.5";
 in
 pkgs.stdenv.mkDerivation {
   inherit version;
@@ -11,7 +11,7 @@ pkgs.stdenv.mkDerivation {
     owner = "civilblur";
     repo = "mazanoke";
     rev = "v${version}";
-    hash = "sha256-8VFYjrXC6rmTDE28p1F4DSIZVhRlSXXXf/qlgAkpQGY=";
+    hash = "sha256-B/AF4diMNxN94BzpZP/C+K8kNj9q+4SDKWa/qd4LrVU=";
   };
   buildPhase = ''
     runHook preBuild
