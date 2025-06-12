@@ -16,9 +16,9 @@ pkgs.stdenv.mkDerivation {
   buildPhase = ''
     runHook preBuild
 
-    mkdir $out
-    cp ./index.html ./favicon.ico ./manifest.json ./service-worker.js $out
-    cp -r ./assets $out/assets
+    mkdir -p $out/share/mazanoke
+    cp ./index.html ./favicon.ico ./manifest.json ./service-worker.js $out/share/mazanoke
+    cp -r ./assets $out/share/mazanoke/assets
 
     runHook postBuild
   '';
