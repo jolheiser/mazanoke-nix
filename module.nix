@@ -28,7 +28,7 @@ in
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
-        ExecStart = "${pkgs.miniserve}/bin/miniserve --port ${builtins.toString cfg.port} --index index.html ${cfg.package}";
+        ExecStart = "${lib.getExe pkgs.darkhttpd} ${cfg.package}/share/mazanoke --port ${builtins.toString cfg.port}";
         Restart = "always";
         User = "mazanoke";
         Group = "mazanoke";
